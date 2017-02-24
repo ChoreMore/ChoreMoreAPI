@@ -1,47 +1,69 @@
-<%= form_for(chore) do |f| %>
-  <% if chore.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(chore.errors.count, "error") %> prohibited this chore from being saved:</h2>
+<%= form_for @chore, :html => { :class => "form-horizontal chore" } do |f| %>
 
-      <ul>
-      <% chore.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @chore.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@chore.errors.count, "error") %> prohibited this chore from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @chore.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :status %>
-    <%= f.text_field :status %>
+  <div class="form-group">
+    <%= f.label :status, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :status, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:status) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :repeat, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :repeat, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:repeat) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :description, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:description) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :value, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :value, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:value) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :family_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :family_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:family_id) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :kid_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :kid_id, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:kid_id) %>
   </div>
 
-  <div class="field">
-    <%= f.label :repeat %>
-    <%= f.text_field :repeat %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                chores_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :description %>
-    <%= f.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= f.label :value %>
-    <%= f.text_field :value %>
-  </div>
-
-  <div class="field">
-    <%= f.label :family_id %>
-    <%= f.text_field :family_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :kid_id %>
-    <%= f.text_field :kid_id %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

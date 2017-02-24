@@ -15,6 +15,8 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 
+gem "twitter-bootstrap-rails"
+
 group :development, :test do
   gem 'byebug', platform: :mri
 end
